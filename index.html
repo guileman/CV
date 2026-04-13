@@ -3,264 +3,540 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV Online de Guillermo Díaz - Ingeniero Mecánico especializado en diseño CAD, simulación FEM/CFD y operación de drones">
     <title>Guillermo Díaz | Ingeniero Mecánico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN - Framework utility-first ligero y moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons - SVG modernos y ligeros -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f172a',
+                        accent: '#3b82f6',
+                        secondary: '#64748b',
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        :root {
-            --primary: #2563eb;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
-            --accent: #0ea5e9;
+        /* Animaciones personalizadas */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
+        
+        .animate-fade-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-slide-left { animation: slideInLeft 0.6s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        
+        /* Efecto de glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-
-        /* Header / Hero Section */
-        header {
-            background: linear-gradient(135deg, var(--dark) 0%, #0f172a 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
+        
+        /* Gradiente animado */
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
+        
+        /* Hover effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        .tagline {
-            font-size: 1.2rem;
-            color: var(--accent);
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-
-        .contact-bar {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            font-size: 0.9rem;
-        }
-
-        .contact-bar a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-
-        .contact-bar a:hover {
-            opacity: 1;
-            color: var(--accent);
-        }
-
-        /* Sections */
-        section {
-            padding: 60px 0;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            color: var(--dark);
-            border-left: 4px solid var(--primary);
-            padding-left: 15px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
+        .hover-lift:hover {
             transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 5px;
+        
+        /* Timeline connector */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
         }
-
-        .date {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* Skills */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-badge {
-            background: #e2e8f0;
-            color: var(--dark);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .skill-badge.highlight {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: #94a3b8;
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
+        
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+        
+        /* Print styles */
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; }
+            .glass { background: white; }
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-200 selection:text-blue-900">
 
-<header>
-    <div class="container">
-        <h1>Guillermo Díaz [cite: 1]</h1>
-        <p class="tagline">Ingeniero Mecánico | Especialista en FEM/CFD, Drones y GNSS [cite: 2, 3]</p>
-        <div class="contact-bar">
-            <a href="mailto:guileman.diaz@gmail.com"><i class="fas fa-envelope"></i> guileman.diaz@gmail.com [cite: 9]</a>
-            <a href="tel:+5493416904961"><i class="fas fa-phone"></i> (54) 9 341 6904961 [cite: 8]</a>
-            <a href="https://www.linkedin.com/in/guillermo-diaz-424ab936" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn [cite: 4]</a>
-            <span><i class="fas fa-map-marker-alt"></i> Roldán, Santa Fe, AR [cite: 5, 6]</span>
-            <span><i class="fas fa-passport"></i> Ciudadanía: AR/IT [cite: 7]</span>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-slate-200/50 no-print">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-display font-bold text-xl text-primary">GD<span class="text-accent">.</span></a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#experiencia" class="hover:text-accent transition-colors">Experiencia</a>
+                <a href="#habilidades" class="hover:text-accent transition-colors">Habilidades</a>
+                <a href="#proyectos" class="hover:text-accent transition-colors">Proyectos</a>
+                <a href="#contacto" class="hover:text-accent transition-colors">Contacto</a>
+            </div>
+            <button onclick="window.print()" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full text-sm hover:bg-slate-800 transition-colors">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                Descargar CV
+            </button>
         </div>
-    </div>
-</header>
+    </nav>
 
-<div class="container">
-    
-    <section id="experiencia">
-        <h2>Experiencia Profesional</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Modelista FEM/CFD [cite: 12]</h3>
-                <span class="date">UTN FRSN | 2010-2014 & 2022-Presente [cite: 12, 13]</span>
-                <p>Desarrollo de modelos computacionales para investigación en la industria siderúrgica. [cite: 13]</p>
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse delay-100"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="animate-fade-up">
+                <span class="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
+                    Ingeniero Mecánico
+                </span>
+                <h1 class="font-display text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight">
+                    Guillermo <span class="gradient-text">Díaz</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-secondary max-w-2xl mx-auto mb-8 leading-relaxed">
+                    Senior mechanical design & numerical simulation. Drone & GNSS operator. 
+                    Apasionado por la innovación en energía hidroeléctrica y fotogrametría aérea.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <span class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm text-sm">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-accent"></i>
+                        Roldán, Santa Fe, Argentina
+                    </span>
+                    <span class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm text-sm">
+                        <i data-lucide="flag" class="w-4 h-4 text-accent"></i>
+                        Argentina / Italiana
+                    </span>
+                    <span class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm text-sm">
+                        <i data-lucide="car" class="w-4 h-4 text-accent"></i>
+                        Licencia A3B1
+                    </span>
+                </div>
+                <div class="flex justify-center gap-4 no-print">
+                    <a href="#contacto" class="px-8 py-4 bg-primary text-white rounded-full font-medium hover:bg-slate-800 transition-all hover:scale-105">
+                        Contactar
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="px-8 py-4 bg-white text-primary border-2 border-slate-200 rounded-full font-medium hover:border-accent hover:text-accent transition-all">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            LinkedIn
+                        </span>
+                    </a>
+                </div>
             </div>
-            <div class="card">
-                <h3>Proyectista Mecánico Freelance [cite: 14]</h3>
-                <span class="date">2022 - Presente [cite: 14]</span>
-                <p>Diseño mecánico, relevamientos y elaboración de memorias de cálculo mediante simulación numérica. [cite: 14, 15]</p>
-            </div>
-            <div class="card">
-                <h3>Asistente de Agrimensura [cite: 16]</h3>
-                <span class="date">2022 - Presente [cite: 16]</span>
-                <p>Fotogrametría aérea y relevamiento topográfico utilizando GNSS RTK Emlid y aeronaves multirrotor. [cite: 16, 17]</p>
-            </div>
-            <div class="card">
-                <h3>Proyectista Sr - Compresores [cite: 19]</h3>
-                <span class="date">SECCO | 2014-2018 & 2019-2021 [cite: 20, 21]</span>
-                <p>Especialista en diseño de equipos para compresión de gas. [cite: 19]</p>
-            </div>
-            <div class="card">
-                <h3>Proyectista Sr [cite: 35]</h3>
-                <span class="date">Terragene | 2018-2019 [cite: 36, 37]</span>
-                <p>Diseño y fabricación de maquinaria automática para líneas de producción. [cite: 38]</p>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce no-print">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-secondary"></i>
+        </div>
+    </header>
+
+    <!-- Current Positions -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Posición Actual</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-white border border-blue-100 hover-lift">
+                    <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="cpu" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-primary mb-2">Modelista FEM/CFD</h3>
+                    <p class="text-accent font-medium text-sm mb-2">UTN FRSN</p>
+                    <p class="text-secondary text-sm mb-3">2010-2014 y 2022-presente (10h semanales)</p>
+                    <p class="text-slate-600 text-sm">Modelos computacionales para investigación en ingeniería mecánica.</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-white border border-purple-100 hover-lift">
+                    <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="briefcase" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-primary mb-2">Proyectista Mecánico</h3>
+                    <p class="text-purple-600 font-medium text-sm mb-2">Freelancer</p>
+                    <p class="text-secondary text-sm mb-3">2022-presente</p>
+                    <p class="text-slate-600 text-sm">Diseño mecánico, relevamientos, memorias de cálculo FEM/CFD.</p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 hover-lift">
+                    <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="plane" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-primary mb-2">Asistente de Agrimensura</h3>
+                    <p class="text-emerald-600 font-medium text-sm mb-2">Independiente</p>
+                    <p class="text-secondary text-sm mb-3">2022-presente</p>
+                    <p class="text-slate-600 text-sm">Relevamiento topográfico y fotogrametría aérea con drones multirrotor y GNSS RTK.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <h2>Hard Skills & Software [cite: 44]</h2>
-        <div class="card">
-            <div class="skills-container">
-                <span class="skill-badge highlight">Ansys (Workbench, Mechanical, Fluent) [cite: 47]</span>
-                <span class="skill-badge highlight">Code_Aster & Salome-Meca [cite: 46]</span>
-                <span class="skill-badge highlight">SolidWorks / Inventor [cite: 45]</span>
-                <span class="skill-badge">Python [cite: 47]</span>
-                <span class="skill-badge">ArduPilot [cite: 47]</span>
-                <span class="skill-badge">QGIS [cite: 47]</span>
-                <span class="skill-badge">Impresión 3D [cite: 46]</span>
-                <span class="skill-badge">Arduino [cite: 47]</span>
-                <span class="skill-badge">AutoCAD [cite: 45]</span>
+    <!-- Experience Timeline -->
+    <section id="experiencia" class="py-20 px-6 bg-slate-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Experiencia Profesional</h2>
+            
+            <div class="relative timeline-line space-y-8">
+                <!-- Secco -->
+                <div class="relative pl-16 animate-slide-left">
+                    <div class="absolute left-0 w-12 h-12 bg-white border-4 border-blue-500 rounded-full flex items-center justify-center">
+                        <i data-lucide="factory" class="w-5 h-5 text-blue-500"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover-lift">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-display font-bold text-xl text-primary">Proyectista Senior - Compresores</h3>
+                            <span class="text-sm text-secondary bg-slate-100 px-3 py-1 rounded-full">2014-2018 / 2019-2021</span>
+                        </div>
+                        <p class="text-accent font-medium mb-2">Secco - www.Secco.com.ar</p>
+                        <p class="text-slate-600">Diseño y desarrollo de compresores industriales. Liderazgo técnico en proyectos de ingeniería mecánica.</p>
+                    </div>
+                </div>
+                
+                <!-- Terragene -->
+                <div class="relative pl-16 animate-slide-left delay-100">
+                    <div class="absolute left-0 w-12 h-12 bg-white border-4 border-purple-500 rounded-full flex items-center justify-center">
+                        <i data-lucide="flask-conical" class="w-5 h-5 text-purple-500"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover-lift">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-display font-bold text-xl text-primary">Proyectista Senior</h3>
+                            <span class="text-sm text-secondary bg-slate-100 px-3 py-1 rounded-full">2018-2019</span>
+                        </div>
+                        <p class="text-purple-600 font-medium mb-2">Terragene - www.terragene.com</p>
+                        <p class="text-slate-600">Diseño y fabricación de máquinas automáticas para laboratorio. Automatización de procesos industriales.</p>
+                    </div>
+                </div>
+                
+                <!-- I-4D -->
+                <div class="relative pl-16 animate-slide-left delay-200">
+                    <div class="absolute left-0 w-12 h-12 bg-white border-4 border-emerald-500 rounded-full flex items-center justify-center">
+                        <i data-lucide="users" class="w-5 h-5 text-emerald-500"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm hover-lift">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-display font-bold text-xl text-primary">Socio Fundador</h3>
+                            <span class="text-sm text-secondary bg-slate-100 px-3 py-1 rounded-full">2006-2014</span>
+                        </div>
+                        <p class="text-emerald-600 font-medium mb-2">I-4D SRL</p>
+                        <p class="text-slate-600">Servicios de ingeniería integral. Gestión de proyectos multidisciplinarios y desarrollo de soluciones técnicas.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="proyectos">
-        <h2>Proyectos Destacados</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Yaku Energía [cite: 28]</h3>
-                <p>Desarrollo de turbinas hidroeléctricas para uso personal y generación sustentable. [cite: 29, 30]</p>
-                <a href="http://www.yakuenergia.com" target="_blank" style="color: var(--primary); font-size: 0.9rem;">Visitar sitio [cite: 31]</a>
-            </div>
-            <div class="card">
-                <h3>Drones & Fotogrametría [cite: 32]</h3>
-                <p>Construcción y configuración de aeronaves multirrotor optimizadas para fotogrametría técnica con ArduPilot. [cite: 33, 34]</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="formacion">
-        <h2>Formación Académica</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Ingeniero Mecánico [cite: 23]</h3>
-                <span class="date">Universidad Nacional de Rosario (1999-2009) [cite: 23, 24]</span>
-            </div>
-            <div class="card">
-                <h3>Docencia [cite: 48]</h3>
-                <span class="date">UCSF (2017-2018) [cite: 51]</span>
-                <p>Docente de la cátedra de SolidWorks. [cite: 52]</p>
+    <!-- Teaching Experience -->
+    <section class="py-16 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 text-yellow-400"></i>
+                        <h2 class="font-display text-2xl md:text-3xl font-bold">Experiencia Docente</h2>
+                    </div>
+                    <div class="border-l-4 border-yellow-400 pl-6">
+                        <h3 class="font-bold text-xl mb-2">Universidad Católica de Santa Fe</h3>
+                        <p class="text-slate-300 mb-2">2017-2018</p>
+                        <p class="text-lg">Docente de cátedra en asignaturas de ingeniería mecánica.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-</div>
+    <!-- Skills -->
+    <section id="habilidades" class="py-20 px-6 bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Habilidades Técnicas</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Hard Skills -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h3 class="font-display font-bold text-xl text-primary mb-6 flex items-center gap-2">
+                        <i data-lucide="wrench" class="w-6 h-6 text-accent"></i>
+                        Hard Skills
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-sm">Inventor / SolidWorks / AutoCAD</span>
+                                <span class="text-accent text-sm">Avanzado</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-sm">ANSYS (Workbench, Mechanical, Fluent)</span>
+                                <span class="text-accent text-sm">Avanzado</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-purple-500 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-sm">Code_Aster / Salome</span>
+                                <span class="text-accent text-sm">Avanzado</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-emerald-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-sm">Python / Arduino / Ardupilot</span>
+                                <span class="text-accent text-sm">Intermedio</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-orange-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-sm">Impresión 3D / Fotogrametría</span>
+                                <span class="text-accent text-sm">Avanzado</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-pink-500 h-2 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h3 class="font-display font-bold text-xl text-primary mb-6 flex items-center gap-2">
+                        <i data-lucide="heart" class="w-6 h-6 text-pink-500"></i>
+                        Soft Skills
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-blue-50 rounded-xl text-center hover:bg-blue-100 transition-colors">
+                            <i data-lucide="lightbulb" class="w-8 h-8 text-blue-500 mx-auto mb-2"></i>
+                            <span class="font-medium text-primary">Creatividad</span>
+                        </div>
+                        <div class="p-4 bg-purple-50 rounded-xl text-center hover:bg-purple-100 transition-colors">
+                            <i data-lucide="shuffle" class="w-8 h-8 text-purple-500 mx-auto mb-2"></i>
+                            <span class="font-medium text-primary">Adaptabilidad</span>
+                        </div>
+                        <div class="p-4 bg-emerald-50 rounded-xl text-center hover:bg-emerald-100 transition-colors">
+                            <i data-lucide="users-2" class="w-8 h-8 text-emerald-500 mx-auto mb-2"></i>
+                            <span class="font-medium text-primary">Trabajo en Equipo</span>
+                        </div>
+                        <div class="p-4 bg-orange-50 rounded-xl text-center hover:bg-orange-100 transition-colors">
+                            <i data-lucide="puzzle" class="w-8 h-8 text-orange-500 mx-auto mb-2"></i>
+                            <span class="font-medium text-primary">Resolución de Problemas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Languages -->
+            <div class="mt-8 bg-white p-6 rounded-2xl shadow-sm flex flex-wrap justify-center gap-8">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">🇦🇷</span>
+                    <div>
+                        <p class="font-bold text-primary">Español</p>
+                        <p class="text-sm text-secondary">Nativo</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">🇮🇹</span>
+                    <div>
+                        <p class="font-bold text-primary">Italiano</p>
+                        <p class="text-sm text-secondary">Ciudadanía</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">🇬🇧</span>
+                    <div>
+                        <p class="font-bold text-primary">Inglés</p>
+                        <p class="text-sm text-secondary">A1 (Básico)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    <div class="container">
-        <p>&copy; 2026 Guillermo Díaz - Ingeniero Mecánico</p>
-        <p style="font-size: 0.8rem; margin-top: 10px;">Licencia de conducir A3 B1 [cite: 10] | Inglés Técnico (A1) [cite: 43]</p>
-    </div>
-</footer>
+    <!-- Projects -->
+    <section id="proyectos" class="py-20 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Proyectos Personales</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Yaku Energía -->
+                <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 text-white p-8 hover-lift">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
+                            <i data-lucide="droplets" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold mb-3">Yaku Energía</h3>
+                        <p class="text-blue-100 mb-4">Turbinas hidroeléctricas para uso residencial y rural. Desarrollo de tecnología sostenible para generación de energía limpia.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/20 rounded-full text-xs backdrop-blur-sm">Energía Limpia</span>
+                            <span class="px-3 py-1 bg-white/20 rounded-full text-xs backdrop-blur-sm">Diseño Mecánico</span>
+                            <span class="px-3 py-1 bg-white/20 rounded-full text-xs backdrop-blur-sm">CFD</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Drones -->
+                <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 text-white p-8 hover-lift">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
+                            <i data-lucide="plane" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold mb-3">Drones Multirrotor</h3>
+                        <p class="text-slate-300 mb-4">Construcción de drones para fotogrametría con RTK/PPK. Sistemas de alta precisión para topografía y mapeo aéreo.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/20 rounded-full text-xs backdrop-blur-sm">Ardupilot</span>
+                            <span class="px-3 py-1 bg-white/20 rounded-full text-xs backdrop-blur-sm">GNSS RTK</span>
+                            <span class="px-3 py-1 bg-white/20 rounded-full text-xs backdrop-blur-sm">Fotogrametría</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Education -->
+    <section class="py-16 px-6 bg-slate-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Formación Académica</h2>
+            
+            <div class="space-y-6">
+                <div class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm hover-lift">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-display font-bold text-xl text-primary">Ingeniero Mecánico</h3>
+                        <p class="text-accent font-medium">Universidad Nacional de Rosario</p>
+                        <p class="text-secondary text-sm mt-1">1999-2009</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm hover-lift">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="school" class="w-8 h-8 text-purple-600"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-display font-bold text-xl text-primary">Técnico Mecánico Electricista</h3>
+                        <p class="text-purple-600 font-medium">Escuela Sagrada Familia, Casilda</p>
+                        <p class="text-secondary text-sm mt-1">1991-1996</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contacto" class="py-20 px-6 bg-primary text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">¿Trabajamos juntos?</h2>
+            <p class="text-slate-300 text-lg mb-12 max-w-2xl mx-auto">
+                Disponible para proyectos de diseño mecánico, simulación FEM/CFD, 
+                fotogrametría aérea y desarrollo de soluciones de energía renovable.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
+                <a href="mailto:guileman.diaz@gmail.com" class="p-6 bg-white/10 rounded-2xl hover:bg-white/20 transition-colors group">
+                    <i data-lucide="mail" class="w-8 h-8 mx-auto mb-3 text-blue-400 group-hover:scale-110 transition-transform"></i>
+                    <p class="font-medium">guileman.diaz@gmail.com</p>
+                </a>
+                <a href="tel:+5493416904961" class="p-6 bg-white/10 rounded-2xl hover:bg-white/20 transition-colors group">
+                    <i data-lucide="phone" class="w-8 h-8 mx-auto mb-3 text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                    <p class="font-medium">+54 9 341 690-4961</p>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="p-6 bg-white/10 rounded-2xl hover:bg-white/20 transition-colors group">
+                    <i data-lucide="linkedin" class="w-8 h-8 mx-auto mb-3 text-blue-400 group-hover:scale-110 transition-transform"></i>
+                    <p class="font-medium">LinkedIn</p>
+                </a>
+            </div>
+            
+            <p class="text-slate-400 text-sm">
+                Roldán, Santa Fe, Argentina • Ciudadanía Argentina/Italiana
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 px-6 text-center text-sm">
+        <p>&copy; 2024 Guillermo Díaz. Ingeniero Mecánico.</p>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animated elements
+        document.querySelectorAll('.animate-slide-left, .animate-fade-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
