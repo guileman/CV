@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Guillermo Díaz - Ingeniero Mecánico</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --accent-color: #0056b3;
+            --white: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { margin: 0.5rem 0 0; font-size: 1.2rem; opacity: 0.9; }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: var(--white);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+        li { margin-bottom: 0.5rem; }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.3s;
+            background-color: #ddd;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-links {
+            text-align: center;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .contact-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Guillermo Díaz</h1>
+    <p>Ingeniero Mecánico | Especialista en FEM/CFD & Drones</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>Sobre mí</h2>
+        <p>Ingeniero Senior con amplia trayectoria en diseño mecánico y simulación numérica avanzada. Especialista en integrar mecánica tradicional con tecnologías de precisión como GNSS/RTK y drones. Orientado a la resolución de problemas técnicos complejos en entornos industriales y de investigación.</p>
+    </section>
+
+    <div class="grid">
+        <section>
+            <h2>Experiencia Clave</h2>
+            <ul>
+                <li><strong>Modelista FEM/CFD</strong> - UTN FRSN (Actualidad)</li>
+                <li><strong>Proyectista Senior</strong> - Secco & Terragene (Compresores y Máquinas)</li>
+                <li><strong>Consultor Freelance</strong> - Cálculo estructural (Shelters/Skids para Genneia)</li>
+                <li><strong>Especialista en Geomática</strong> - Relevamientos con drones RTK</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Habilidades Técnicas</h2>
+            <ul>
+                <li><strong>Simulación:</strong> Code_Aster, Ansys, Salome, Paraview.</li>
+                <li><strong>Diseño:</strong> SolidWorks, Inventor, AutoCAD.</li>
+                <li><strong>Tecnología:</strong> Python, ArduPilot, GNSS/RTK, Fotogrametría.</li>
+                <li><strong>IT:</strong> Linux (Ubuntu), Git, Desarrollo Web básico.</li>
+            </ul>
+        </section>
+    </div>
+
+    <section>
+        <h2>Proyectos y Portfolio</h2>
+        <div class="gallery">
+            <!-- Estas imágenes se cargan desde la carpeta /images relativa al index.html -->
+            <img src="images/fem-analysis.jpg" alt="Análisis FEM">
+            <img src="images/drone-survey.jpg" alt="Relevamiento Drone">
+            <img src="images/shelter-design.jpg" alt="Diseño de Shelters">
+            <img src="images/geopoly-tool.jpg" alt="GeoPoly Tool">
+            <img src="images/rtk-station.jpg" alt="Estación RTK">
+            <img src="images/3d-render.jpg" alt="Render 3D">
+        </div>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">* Las imágenes se sirven desde la carpeta <code>/images</code> de este repositorio.</p>
+    </section>
+</div>
+
+<div class="contact-links">
+    <a href="mailto:guileman.diaz@gmail.com">Email</a> | 
+    <a href="https://www.linkedin.com/in/guillermo-diaz-424ab936">LinkedIn</a> | 
+    <a href="https://github.com/guileman">GitHub</a>
+</div>
+
+</body>
+</html>
