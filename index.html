@@ -3,152 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Guillermo Díaz - Ingeniero Mecánico</title>
+    <title>Portfolio Profesional - Ingeniero Mecánico</title>
     <style>
         :root {
-            --bg-color: #f4f4f9;
-            --text-color: #333;
-            --accent-color: #0056b3;
+            --primary: #2c3e50;
+            --accent: #2980b9;
+            --bg: #f8f9fa;
             --white: #ffffff;
+            --text: #333;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { margin: 0.5rem 0 0; font-size: 1.2rem; opacity: 0.9; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; margin: 0; }
+        header { background: var(--primary); color: var(--white); padding: 3rem 1rem; text-align: center; }
+        .container { max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem; }
+        section { background: var(--white); padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h2 { color: var(--accent); border-bottom: 2px solid #eee; padding-bottom: 0.5rem; margin-top: 0; }
+        .project-card { border-left: 4px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem; }
+        .tag { background: #e1ecf4; color: #39739d; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold; }
+        
+        /* Galería */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; transition: transform 0.3s; background: #eee; }
+        .gallery img:hover { transform: scale(1.03); }
 
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        section {
-            background: var(--white);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            color: var(--accent-color);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         ul { padding-left: 1.2rem; }
         li { margin-bottom: 0.5rem; }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 4px;
-            transition: transform 0.3s;
-            background-color: #ddd;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        .contact-links {
-            text-align: center;
-            margin-top: 2rem;
-            padding-bottom: 2rem;
-        }
-
-        .contact-links a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        @media (max-width: 600px) {
-            .grid { grid-template-columns: 1fr; }
-        }
+        .contact { text-align: center; padding: 2rem; font-size: 0.9rem; color: #666; }
+        a { color: var(--accent); text-decoration: none; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Guillermo Díaz</h1>
-    <p>Ingeniero Mecánico | Especialista en FEM/CFD & Drones</p>
+    <p>Ingeniero Mecánico | Especialista en Simulación Numérica & Tecnologías UAS</p>
 </header>
 
 <div class="container">
     <section>
-        <h2>Sobre mí</h2>
-        <p>Ingeniero Senior con amplia trayectoria en diseño mecánico y simulación numérica avanzada. Especialista en integrar mecánica tradicional con tecnologías de precisión como GNSS/RTK y drones. Orientado a la resolución de problemas técnicos complejos en entornos industriales y de investigación.</p>
+        <h2>Trayectoria Profesional</h2>
+        
+        <div class="project-card">
+            <h3>Modelista FEM/CFD (Investigación Siderúrgica)</h3>
+            <p>Desarrollo de modelos computacionales avanzados para la industria pesada[cite: 1, 13]. Enfoque en simulación térmica y estructural para la optimización de procesos de producción y análisis de fatiga de materiales[cite: 13].</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Ingeniero Proyectista Senior (Consultoría & Industria)</h3>
+            <p>Liderazgo en el diseño mecánico y cálculo estructural para infraestructuras industriales críticas[cite: 3, 14].</p>
+            <ul>
+                <li>Verificación y generación de memorias de cálculo para <strong>shelters y skids</strong> de salas eléctricas[cite: 15].</li>
+                <li>Diseño integral de sistemas de compresión de gas y maquinaria automática para producción biotecnológica[cite: 19, 38].</li>
+                <li>Gestión de planos técnicos, selección de materiales y supervisión de ensambles mecánicos[cite: 15, 38].</li>
+            </ul>
+        </div>
     </section>
 
-    <div class="grid">
-        <section>
-            <h2>Experiencia Clave</h2>
-            <ul>
-                <li><strong>Modelista FEM/CFD</strong> - UTN FRSN (Actualidad)</li>
-                <li><strong>Proyectista Senior</strong> - Secco & Terragene (Compresores y Máquinas)</li>
-                <li><strong>Consultor Freelance</strong> - Cálculo estructural (Shelters/Skids para Genneia)</li>
-                <li><strong>Especialista en Geomática</strong> - Relevamientos con drones RTK</li>
-            </ul>
-        </section>
+    <section>
+        <h2>Proyectos Propios e Innovación</h2>
+        
+        <div class="project-card">
+            <h3>Yaku Energía - Turbinas Hidroeléctricas</h3>
+            <p>Iniciativa orientada a la generación sostenible a microescala[cite: 28, 29]. Diseño y fabricación de turbinas compactas, optimizadas mediante <strong>CFD</strong> para maximizar la eficiencia en saltos de agua reducidos[cite: 29, 31].</p>
+            <a href="http://www.yakuenergia.com" target="_blank">→ Visitar yakuenergia.com</a>
+        </div>
 
-        <section>
-            <h2>Habilidades Técnicas</h2>
+        <div class="project-card">
+            <h3>Desarrollo de Sistemas UAS (Drones de Precisión)</h3>
+            <p>Construcción y operación de aeronaves multirrotor configuradas para ingeniería y geomática[cite: 32, 33].</p>
             <ul>
-                <li><strong>Simulación:</strong> Code_Aster, Ansys, Salome, Paraview.</li>
-                <li><strong>Diseño:</strong> SolidWorks, Inventor, AutoCAD.</li>
-                <li><strong>Tecnología:</strong> Python, ArduPilot, GNSS/RTK, Fotogrametría.</li>
-                <li><strong>IT:</strong> Linux (Ubuntu), Git, Desarrollo Web básico.</li>
+                <li><strong>Capacidades:</strong> Relevamientos con precisión centimétrica mediante integración <strong>GNSS RTK</strong>[cite: 17].</li>
+                <li><strong>Aplicaciones:</strong> Fotogrametría aérea, generación de modelos digitales de terreno (MDT) y nubes de puntos 3D[cite: 17].</li>
+                <li><strong>Tecnología:</strong> Controladoras basadas en <strong>ArduPilot</strong> y procesamiento de datos en QGIS[cite: 34, 47].</li>
             </ul>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <section>
-        <h2>Proyectos y Portfolio</h2>
-        <div class="gallery">
-            <!-- Estas imágenes se cargan desde la carpeta /images relativa al index.html -->
-            <img src="images/fem-analysis.jpg" alt="Análisis FEM">
-            <img src="images/drone-survey.jpg" alt="Relevamiento Drone">
-            <img src="images/shelter-design.jpg" alt="Diseño de Shelters">
-            <img src="images/geopoly-tool.jpg" alt="GeoPoly Tool">
-            <img src="images/rtk-station.jpg" alt="Estación RTK">
-            <img src="images/3d-render.jpg" alt="Render 3D">
+        <h2>Habilidades Técnicas</h2>
+        <div class="skills-grid">
+            <div>
+                <h3>Simulación & Diseño</h3>
+                <ul>
+                    <li><strong>FEM/CFD:</strong> Code_Aster, Salomé-Meca, Ansys (Workbench, Fluent, Mechanical)[cite: 46, 47].</li>
+                    <li><strong>CAD:</strong> SolidWorks, Autodesk Inventor, AutoCAD[cite: 45].</li>
+                    <li>Interpretación de resultados y post-procesamiento en Paraview[cite: 15].</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Tecnología e IT</h3>
+                <ul>
+                    <li><strong>Programación:</strong> Python (scripts técnicos), Arduino[cite: 47].</li>
+                    <li><strong>IT:</strong> Administración de sistemas Linux (Ubuntu) y Git.</li>
+                    <li><strong>Nuevas Tecnologías:</strong> Impresión 3D, Godot 4.3 (visualización técnica)[cite: 46].</li>
+                </ul>
+            </div>
         </div>
-        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">* Las imágenes se sirven desde la carpeta <code>/images</code> de este repositorio.</p>
+    </section>
+
+    <section>
+        <h2>Galería de Proyectos</h2>
+        <div class="gallery">
+            <img src="images/simulacion.jpg" alt="Análisis de Elementos Finitos">
+            <img src="images/drone.jpg" alt="Unidad UAS de Relevamiento">
+            <img src="images/yaku.jpg" alt="Turbina Yaku Energía">
+            <img src="images/shelter.jpg" alt="Diseño de Shelters Industriales">
+            <img src="images/rtk.jpg" alt="Estación Base GNSS RTK">
+            <img src="images/cad.jpg" alt="Modelado Mecánico 3D">
+        </div>
     </section>
 </div>
 
-<div class="contact-links">
-    <a href="mailto:guileman.diaz@gmail.com">Email</a> | 
-    <a href="https://www.linkedin.com/in/guillermo-diaz-424ab936">LinkedIn</a> | 
-    <a href="https://github.com/guileman">GitHub</a>
+<div class="contact">
+    <p>Guillermo Díaz | Roldán, Santa Fe, Argentina [cite: 1, 5]</p>
+    <p>
+        <a href="mailto:guileman.diaz@gmail.com">Email</a> | 
+        <a href="https://linkedin.com/in/guillermo-diaz-424ab936">LinkedIn</a>
+    </p>
 </div>
 
 </body>
