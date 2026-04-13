@@ -3,212 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Guillermo Díaz</title>
+    <title>Panel de Control - Proyecto Dron</title>
     <style>
         :root {
             --primary-color: #2c3e50;
-            --accent-color: #34495e;
-            --text-color: #333;
-            --line-color: #bdc3c7;
+            --accent-color: #3498db;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.5;
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background-color: var(--bg-light); 
+            color: var(--primary-color); 
+            margin: 0; 
+            padding: 0; 
         }
-        .cv-container {
-            max-width: 850px;
-            margin: auto;
-            background: white;
-            padding: 40px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        header { 
+            background: var(--primary-color); 
+            color: var(--white); 
+            padding: 40px 20px; 
+            text-align: center; 
         }
-        header {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        .container { 
+            max-width: 900px; 
+            margin: 30px auto; 
+            padding: 20px; 
         }
-        h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 28px;
-            text-transform: uppercase;
+        .section-card { 
+            background: var(--white); 
+            border-radius: 12px; 
+            padding: 25px; 
+            margin-bottom: 25px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
         }
-        .tagline {
-            font-size: 18px;
-            color: var(--accent-color);
-            font-weight: bold;
-            margin: 5px 0;
+        h2 { 
+            border-bottom: 2px solid var(--accent-color); 
+            padding-bottom: 10px; 
+            margin-top: 0; 
         }
-        .contact-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            font-size: 14px;
-            gap: 5px;
+        .specs-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
         }
-        .contact-info a {
-            color: var(--text-color);
-            text-decoration: none;
+        .spec-item { 
+            background: #f1f4f6; 
+            padding: 10px 15px; 
+            border-radius: 6px; 
         }
-        section {
-            margin-bottom: 20px;
-        }
-        h2 {
-            font-size: 18px;
-            color: white;
-            background-color: var(--primary-color);
-            padding: 5px 10px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .item {
-            margin-bottom: 15px;
-        }
-        .item-title {
-            font-weight: bold;
-            display: block;
-        }
-        .item-date {
-            font-style: italic;
-            color: #666;
-            font-size: 14px;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        ul {
-            margin: 5px 0;
-            padding-left: 20px;
-        }
-        .skills-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .skills-list li {
-            background: #eee;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 13px;
+        .highlight { 
+            font-weight: bold; 
+            color: var(--accent-color); 
         }
     </style>
 </head>
 <body>
 
-<div class="cv-container">
-    <header>
-        <h1>Guillermo Díaz [cite: 1]</h1>
-        <p class="tagline">Ingeniero Mecánico [cite: 2]</p>
-        <p style="font-size: 14px; margin: 5px 0;">Diseño mecánico senior, simulación numérica, operador de drones y GNSS. Artista 3D y VR principiante. [cite: 3]</p>
-        <div class="contact-info">
-            <span>📍 Residencia: Roldán, Santa Fe, Argentina [cite: 5, 6]</span>
-            <span>📞 (54) 9 341 6904961 [cite: 8]</span>
-            <span>✉️ guileman.diaz@gmail.com [cite: 9]</span>
-            <span>🌐 <a href="https://www.linkedin.com/in/guillermo-diaz-424ab936">Linkedin Profile</a> [cite: 4]</span>
-            <span>🪪 Ciudadanía: Argentina/Italiana [cite: 7]</span>
-            <span>🚗 Licencia: A3, B1 [cite: 10]</span>
+<header>
+    <h1>Gestión de Proyectos UAV</h1>
+    <p>Ingeniería Mecánica y Fotogrametría de Precisión</p>
+</header>
+
+<div class="container">
+    <section class="section-card">
+        <h2>Especificaciones Rover 1</h2>
+        <div class="specs-grid">
+            <div class="spec-item"><strong>Hardware:</strong> CUAV Nano V5</div>
+            <div class="spec-item"><strong>Firmware:</strong> ArduPilot</div>
+            <div class="spec-item"><strong>Posicionamiento:</strong> RTK (simpleRTK2B)</div>
+            <div class="spec-item"><strong>Precisión:</strong> Centimétrica</div>
         </div>
-    </header>
+        <p>Plataforma optimizada para relevamientos técnicos, eliminando la necesidad de puntos de control terrestres mediante correcciones en tiempo real.</p>
+    </section>
 
-    <div class="grid-container">
-        <div class="left-column">
-            <section>
-                <h2>Puesto Actual</h2>
-                <div class="item">
-                    <span class="item-title">Modelista FEM/CFD [cite: 12]</span>
-                    <span class="item-date">UTN FRSN | 2010-2014 y 2022-presente [cite: 12, 13]</span>
-                    <p>Modelos computacionales para investigación en siderurgia (10hs semanales). [cite: 13]</p>
-                </div>
-                <div class="item">
-                    <span class="item-title">Proyectista mecánico y cálculo FEM/CFD (Freelancer) [cite: 14]</span>
-                    <span class="item-date">2022 - presente [cite: 14]</span>
-                    <p>Diseño mecánico, relevamientos y memorias de cálculo. [cite: 15]</p>
-                </div>
-                <div class="item">
-                    <span class="item-title">Asistente de agrimensura (Freelancer) [cite: 16]</span>
-                    <span class="item-date">2022 - presente [cite: 16]</span>
-                    <p>Relevamiento, replanteo topográfico y fotogrametría aérea. [cite: 17]</p>
-                    <p>Equipamiento: aeronave multirrotor, GNSS RTK Emlid. [cite: 17]</p>
-                </div>
-            </section>
+    <section class="section-card">
+        <h2>GeoPoly Tool v2.0</h2>
+        <p>Módulo de transformación de coordenadas geodésicas (POSGAR 07) para integración directa en flujos de trabajo CAD y GIS.</p>
+    </section>
 
-            <section>
-                <h2>Experiencia Profesional</h2>
-                <div class="item">
-                    <span class="item-title">Proyectista Sr - Compresores de gas [cite: 19]</span>
-                    <span class="item-date">Períodos 2014-2018 y 2019-2021 | www.secco.com.ar [cite: 20, 21]</span>
-                </div>
-                <div class="item">
-                    <span class="item-title">Proyectista Sr [cite: 35]</span>
-                    <span class="item-date">2018-2019 | www.terragene.com [cite: 36, 37]</span>
-                    <p>Diseño y fabricación de máquinas automáticas para producción. [cite: 38]</p>
-                </div>
-                <div class="item">
-                    <span class="item-title">Socio Fundador [cite: 41]</span>
-                    <span class="item-date">I-4D SRL, Rosario | 2006-2014 [cite: 39, 40]</span>
-                    <p>Servicios de Ingeniería mecánica. [cite: 41]</p>
-                </div>
-            </section>
-        </div>
-
-        <div class="right-column">
-            <section>
-                <h2>Formación</h2>
-                <div class="item">
-                    <span class="item-title">Ingeniero Mecánico [cite: 23]</span>
-                    <span class="item-date">Universidad Nacional de Rosario | 1999-2009 [cite: 23, 24]</span>
-                </div>
-                <div class="item">
-                    <span class="item-title">Técnico Mecánico Electricista [cite: 25]</span>
-                    <span class="item-date">Sagrada Familia, Casilda | 1991-1996 [cite: 25, 26]</span>
-                </div>
-            </section>
-
-            <section>
-                <h2>Proyectos Personales</h2>
-                <div class="item">
-                    <span class="item-title">Yaku Energía [cite: 28]</span>
-                    <p>Turbinas hidroeléctricas para uso personal. [cite: 29, 30] <br> www.yakuenergia.com [cite: 31]</p>
-                </div>
-                <div class="item">
-                    <span class="item-title">Drones [cite: 32]</span>
-                    <p>Construcción de multirrotor para fotogrametría con Ardupilot. [cite: 33, 34]</p>
-                </div>
-            </section>
-
-            <section>
-                <h2>Docencia</h2>
-                <div class="item">
-                    <span class="item-title">Docente de SolidWorks [cite: 52]</span>
-                    <span class="item-date">Univ. Católica de Santa Fe, Rosario | 2017-2018 [cite: 51]</span>
-                </div>
-            </section>
-
-            <section>
-                <h2>Hard Skills [cite: 44]</h2>
-                <ul class="skills-list">
-                    <li>Inventor [cite: 45]</li><li>SolidWorks [cite: 45]</li><li>AutoCAD [cite: 45]</li>
-                    <li>CodeAster [cite: 46]</li><li>Salome [cite: 46]</li><li>Ansys Workbench [cite: 47]</li>
-                    <li>Ansys Mechanical [cite: 47]</li><li>Ansys Fluent [cite: 47]</li><li>Python [cite: 47]</li>
-                    <li>Arduino [cite: 47]</li><li>Ardupilot [cite: 47]</li><li>QGIS [cite: 47]</li>
-                    <li>Impresión 3D [cite: 46]</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Idiomas / Soft Skills</h2>
-                <p><strong>Inglés:</strong> Nivel A1 [cite: 43]</p>
-                <p><strong>Habilidades:</strong> Creatividad, Adaptabilidad, Trabajo en equipo, Resolución de problemas. [cite: 50, 53]</p>
-            </section>
-        </div>
-    </div>
+    <section class="section-card">
+        <h2>Servicios de Ingeniería</h2>
+        <ul>
+            <li>Cálculo y verificación estructural mediante elementos finitos (FEM).</li>
+            <li>Consultoría técnica para proyectos de salas eléctricas e infraestructura industrial.</li>
+            <li>Procesamiento de datos de fotogrametría aérea.</li>
+        </ul>
+    </section>
 </div>
 
 </body>
