@@ -6,7 +6,7 @@
     <meta name="description" content="CV Online de Guillermo Díaz - Ingeniero Mecánico especializado en diseño CAD, simulación FEM/CFD y operación de drones">
     <title>Guillermo Díaz | Ingeniero Mecánico</title>
     
-    <!-- Tailwind CSS CDN - Framework utility-first ligero y moderno -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts -->
@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons - SVG modernos y ligeros -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <script>
@@ -36,7 +36,7 @@
     </script>
     
     <style>
-        /* Animaciones personalizadas */
+        /* Animaciones */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -53,14 +53,14 @@
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
         
-        /* Efecto de glassmorphism */
+        /* Glassmorphism */
         .glass {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
         
-        /* Gradiente animado */
+        /* Gradiente texto */
         .gradient-text {
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
             -webkit-background-clip: text;
@@ -77,7 +77,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         
-        /* Timeline connector */
+        /* Timeline */
         .timeline-line::before {
             content: '';
             position: absolute;
@@ -88,7 +88,6 @@
             background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
         }
         
-        /* Smooth scroll */
         html { scroll-behavior: smooth; }
         
         /* Print styles */
@@ -96,6 +95,166 @@
             .no-print { display: none !important; }
             body { background: white; }
             .glass { background: white; }
+        }
+
+        /* ===== GALERÍA CSS ===== */
+        /* Grid de galería responsive */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 0.75rem;
+            }
+        }
+        
+        /* Items de galería */
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 1rem;
+            cursor: zoom-in;
+            background: #f1f5f9;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Overlay en hover */
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        /* Caption en hover */
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            color: white;
+            font-size: 0.875rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* ===== LIGHTBOX CSS PURO ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        /* Mostrar lightbox cuando es target */
+        .lightbox:target {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .lightbox img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-caption {
+            color: white;
+            margin-top: 1rem;
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        /* Botón cerrar */
+        .lightbox-close {
+            position: absolute;
+            top: -3rem;
+            right: 0;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-decoration: none;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Navegación lightbox */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 3rem;
+            text-decoration: none;
+            padding: 1rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox-nav:hover {
+            opacity: 1;
+        }
+        
+        .lightbox-prev { left: 2rem; }
+        .lightbox-next { right: 2rem; }
+        
+        @media (max-width: 768px) {
+            .lightbox-nav { display: none; }
+            .lightbox-close { top: 1rem; right: 1rem; }
         }
     </style>
 </head>
@@ -109,18 +268,19 @@
                 <a href="#experiencia" class="hover:text-accent transition-colors">Experiencia</a>
                 <a href="#habilidades" class="hover:text-accent transition-colors">Habilidades</a>
                 <a href="#proyectos" class="hover:text-accent transition-colors">Proyectos</a>
+                <a href="#galeria" class="hover:text-accent transition-colors">Galería</a>
                 <a href="#contacto" class="hover:text-accent transition-colors">Contacto</a>
             </div>
-            <button onclick="window.print()" class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full text-sm hover:bg-slate-800 transition-colors">
+            <!-- Botón Descargar CV - Link al PDF en carpeta files/ -->
+            <a href="files/CV%20GDiaz%20Ing%20Mecanico.pdf" download class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full text-sm hover:bg-slate-800 transition-colors">
                 <i data-lucide="download" class="w-4 h-4"></i>
                 Descargar CV
-            </button>
+            </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
-        <!-- Background decoration -->
         <div class="absolute inset-0 -z-10">
             <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
             <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse delay-100"></div>
@@ -166,7 +326,6 @@
             </div>
         </div>
         
-        <!-- Scroll indicator -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce no-print">
             <i data-lucide="chevron-down" class="w-6 h-6 text-secondary"></i>
         </div>
@@ -177,7 +336,6 @@
         <div class="max-w-6xl mx-auto">
             <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Posición Actual</h2>
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
                 <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-white border border-blue-100 hover-lift">
                     <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
                         <i data-lucide="cpu" class="w-6 h-6 text-white"></i>
@@ -188,7 +346,6 @@
                     <p class="text-slate-600 text-sm">Modelos computacionales para investigación en ingeniería mecánica.</p>
                 </div>
                 
-                <!-- Card 2 -->
                 <div class="p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-white border border-purple-100 hover-lift">
                     <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
                         <i data-lucide="briefcase" class="w-6 h-6 text-white"></i>
@@ -199,7 +356,6 @@
                     <p class="text-slate-600 text-sm">Diseño mecánico, relevamientos, memorias de cálculo FEM/CFD.</p>
                 </div>
                 
-                <!-- Card 3 -->
                 <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 hover-lift">
                     <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mb-4">
                         <i data-lucide="plane" class="w-6 h-6 text-white"></i>
@@ -219,7 +375,6 @@
             <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Experiencia Profesional</h2>
             
             <div class="relative timeline-line space-y-8">
-                <!-- Secco -->
                 <div class="relative pl-16 animate-slide-left">
                     <div class="absolute left-0 w-12 h-12 bg-white border-4 border-blue-500 rounded-full flex items-center justify-center">
                         <i data-lucide="factory" class="w-5 h-5 text-blue-500"></i>
@@ -234,7 +389,6 @@
                     </div>
                 </div>
                 
-                <!-- Terragene -->
                 <div class="relative pl-16 animate-slide-left delay-100">
                     <div class="absolute left-0 w-12 h-12 bg-white border-4 border-purple-500 rounded-full flex items-center justify-center">
                         <i data-lucide="flask-conical" class="w-5 h-5 text-purple-500"></i>
@@ -249,7 +403,6 @@
                     </div>
                 </div>
                 
-                <!-- I-4D -->
                 <div class="relative pl-16 animate-slide-left delay-200">
                     <div class="absolute left-0 w-12 h-12 bg-white border-4 border-emerald-500 rounded-full flex items-center justify-center">
                         <i data-lucide="users" class="w-5 h-5 text-emerald-500"></i>
@@ -318,13 +471,14 @@
                                 <div class="bg-purple-500 h-2 rounded-full" style="width: 90%"></div>
                             </div>
                         </div>
+                        <!-- CAMBIADO A INTERMEDIO -->
                         <div>
                             <div class="flex justify-between mb-1">
                                 <span class="font-medium text-sm">Code_Aster / Salome</span>
-                                <span class="text-accent text-sm">Avanzado</span>
+                                <span class="text-orange-500 text-sm font-medium">Intermedio</span>
                             </div>
                             <div class="w-full bg-slate-200 rounded-full h-2">
-                                <div class="bg-emerald-500 h-2 rounded-full" style="width: 85%"></div>
+                                <div class="bg-orange-500 h-2 rounded-full" style="width: 60%"></div>
                             </div>
                         </div>
                         <div>
@@ -408,7 +562,6 @@
             <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Proyectos Personales</h2>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Yaku Energía -->
                 <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 text-white p-8 hover-lift">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
                     <div class="relative z-10">
@@ -425,7 +578,6 @@
                     </div>
                 </div>
                 
-                <!-- Drones -->
                 <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 text-white p-8 hover-lift">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
                     <div class="relative z-10">
@@ -445,13 +597,124 @@
         </div>
     </section>
 
+    <!-- ===== NUEVA SECCIÓN GALERÍA ===== -->
+    <section id="galeria" class="py-20 px-6 bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-4 text-center">Galería de Proyectos</h2>
+            <p class="text-secondary text-center mb-12 max-w-2xl mx-auto">
+                Imágenes de trabajos de diseño mecánico, simulaciones FEM/CFD, drones y proyectos de energía hidroeléctrica.
+            </p>
+            
+            <!-- Grid de Galería - Carga imágenes desde carpeta images/ -->
+            <div class="gallery-grid">
+                <!-- Ejemplo de items - Reemplazar con tus imágenes -->
+                <a href="#img1" class="gallery-item">
+                    <img src="images/proyecto1.jpg" alt="Proyecto de diseño mecánico" loading="lazy">
+                    <div class="gallery-caption">Diseño CAD - Turbina</div>
+                </a>
+                
+                <a href="#img2" class="gallery-item">
+                    <img src="images/simulacion1.jpg" alt="Simulación FEM" loading="lazy">
+                    <div class="gallery-caption">Simulación FEM - Análisis estructural</div>
+                </a>
+                
+                <a href="#img3" class="gallery-item">
+                    <img src="images/drone1.jpg" alt="Drone multirrotor" loading="lazy">
+                    <div class="gallery-caption">Drone fotogrametría RTK</div>
+                </a>
+                
+                <a href="#img4" class="gallery-item">
+                    <img src="images/cfd1.jpg" alt="Simulación CFD" loading="lazy">
+                    <div class="gallery-caption">Análisis CFD - Flujo turbulento</div>
+                </a>
+                
+                <a href="#img5" class="gallery-item">
+                    <img src="images/impresion1.jpg" alt="Impresión 3D" loading="lazy">
+                    <div class="gallery-caption">Prototipo impreso 3D</div>
+                </a>
+                
+                <a href="#img6" class="gallery-item">
+                    <img src="images/yaku1.jpg" alt="Proyecto Yaku Energía" loading="lazy">
+                    <div class="gallery-caption">Yaku Energía - Turbina hidroeléctrica</div>
+                </a>
+            </div>
+            
+            <p class="text-center text-sm text-secondary mt-8">
+                <i data-lucide="info" class="w-4 h-4 inline mr-1"></i>
+                Agrega tus imágenes en la carpeta <code class="bg-slate-200 px-2 py-1 rounded">images/</code> y actualiza las rutas en el HTML
+            </p>
+        </div>
+    </section>
+
+    <!-- Lightboxes CSS puros - Sin JavaScript -->
+    <!-- Cada lightbox corresponde a una imagen de la galería -->
+    <div id="img1" class="lightbox">
+        <a href="#galeria" class="lightbox-close">&times;</a>
+        <div class="lightbox-content">
+            <img src="images/proyecto1.jpg" alt="Proyecto de diseño mecánico">
+            <p class="lightbox-caption">Diseño CAD - Turbina hidroeléctrica</p>
+        </div>
+        <a href="#img6" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <a href="#img2" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    
+    <div id="img2" class="lightbox">
+        <a href="#galeria" class="lightbox-close">&times;</a>
+        <div class="lightbox-content">
+            <img src="images/simulacion1.jpg" alt="Simulación FEM">
+            <p class="lightbox-caption">Simulación FEM - Análisis estructural</p>
+        </div>
+        <a href="#img1" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <a href="#img3" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    
+    <div id="img3" class="lightbox">
+        <a href="#galeria" class="lightbox-close">&times;</a>
+        <div class="lightbox-content">
+            <img src="images/drone1.jpg" alt="Drone multirrotor">
+            <p class="lightbox-caption">Drone multirrotor para fotogrametría con RTK</p>
+        </div>
+        <a href="#img2" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <a href="#img4" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    
+    <div id="img4" class="lightbox">
+        <a href="#galeria" class="lightbox-close">&times;</a>
+        <div class="lightbox-content">
+            <img src="images/cfd1.jpg" alt="Simulación CFD">
+            <p class="lightbox-caption">Análisis CFD - Flujo turbulento</p>
+        </div>
+        <a href="#img3" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <a href="#img5" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    
+    <div id="img5" class="lightbox">
+        <a href="#galeria" class="lightbox-close">&times;</a>
+        <div class="lightbox-content">
+            <img src="images/impresion1.jpg" alt="Impresión 3D">
+            <p class="lightbox-caption">Prototipo impreso en 3D</p>
+        </div>
+        <a href="#img4" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <a href="#img6" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    
+    <div id="img6" class="lightbox">
+        <a href="#galeria" class="lightbox-close">&times;</a>
+        <div class="lightbox-content">
+            <img src="images/yaku1.jpg" alt="Proyecto Yaku Energía">
+            <p class="lightbox-caption">Yaku Energía - Sistema de turbina hidroeléctrica</p>
+        </div>
+        <a href="#img5" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <a href="#img1" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+
     <!-- Education -->
-    <section class="py-16 px-6 bg-slate-50">
+    <section class="py-16 px-6 bg-white">
         <div class="max-w-4xl mx-auto">
             <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Formación Académica</h2>
             
             <div class="space-y-6">
-                <div class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm hover-lift">
+                <div class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm hover-lift border border-slate-100">
                     <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
                         <i data-lucide="graduation-cap" class="w-8 h-8 text-blue-600"></i>
                     </div>
@@ -462,7 +725,7 @@
                     </div>
                 </div>
                 
-                <div class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm hover-lift">
+                <div class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm hover-lift border border-slate-100">
                     <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center flex-shrink-0">
                         <i data-lucide="school" class="w-8 h-8 text-purple-600"></i>
                     </div>
@@ -515,7 +778,7 @@
     <script>
         lucide.createIcons();
         
-        // Intersection Observer for scroll animations
+        // Intersection Observer para animaciones
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -530,7 +793,6 @@
             });
         }, observerOptions);
         
-        // Observe all animated elements
         document.querySelectorAll('.animate-slide-left, .animate-fade-up').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
